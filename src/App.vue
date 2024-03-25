@@ -5,6 +5,28 @@ const nome = ref('')
 const sexo = ref('')
 const cidade = ref('')
 const estado = ref('')
+const email = ref('')
+const senha = ref('')
+const data = ref('')
+const confirmar = ref('')
+
+function Confirmar(){
+  if(nome.value.length < 3){
+    alert("O nome deve ter mais de 3 letras")
+    return false;
+  }
+  if(!email.value.includes("@")){
+    alert("O e-mail deve ser váli do")
+    return false;
+  }
+  if(senha.value != confirmar.value){
+    alert("Senha errada.")
+  }
+  if(cidade.value == ""){
+    alert("coloque sua cidade. ")
+  }
+
+}
 </script>
 
 <template>
@@ -16,14 +38,23 @@ const estado = ref('')
     <p>senha</p>
     <input type="password" v-model="senha" minlength="3" />
 
+    <p>Confirmar senha</p>
+    <input type="password" v-model="confirmar" minlength="3" />
+
     <p>email</p>
     <input type="email" v-model="email" />
 
     <p>idade</p>
     <input type="number" v-model="idade" />
 
+
+    <p>data</p>
+    <input type="date" v-model="data" />
+  
     <p>endereço</p>
-    <input type="text" v-model="endereço" />
+    <input type="text" v-model="endereço" /> 
+
+    <button type="button" @click="Confirmar()">Confirmar</button>
     
       <p>Cidade</p>
     <select v-model="cidade">
@@ -46,10 +77,6 @@ const estado = ref('')
       <option value="feminino">feminino</option>
     </select>
 
-    <p>data</p>
-    <input type="date" v-model="data" />
-  
-    <button type="button">Confirmar</button>
 
     </form>
 
